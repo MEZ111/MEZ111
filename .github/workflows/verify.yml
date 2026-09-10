@@ -27,7 +27,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install CLI
+        run: python -m pip install .
       - name: Run unit tests
         run: python -m unittest -v test_recon_evidence.py
-      - name: Verify example report
-        run: python recon_evidence.py sample.jsonl --strict -o /tmp/recon-report.md
+      - name: Verify installed command
+        run: recon-evidence sample.jsonl --strict -o /tmp/recon-report.md
