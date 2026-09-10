@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recon-evidence-cli"
+version = "0.1.0"
+description = "Normalize and prioritize JSONL reconnaissance evidence."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "MEZ111" }]
+keywords = ["security", "reconnaissance", "jsonl", "reporting", "cli"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+]
+
+[project.scripts]
+recon-evidence = "recon_evidence:main"
+
+[tool.setuptools]
+py-modules = ["recon_evidence"]
