@@ -1,5 +1,7 @@
 # Recon Evidence
 
+[![Verification](https://github.com/MEZ111/MEZ111/actions/workflows/verify.yml/badge.svg)](https://github.com/MEZ111/MEZ111/actions/workflows/verify.yml)
+
 Recon Evidence turns newline-delimited JSON from reconnaissance tools into a
 deduplicated, prioritized, auditable report. It is designed for the point where
 raw tool output becomes too noisy to review reliably.
@@ -16,7 +18,7 @@ vulnerability.
 
 ## Features
 
-- Parses JSONL without third-party dependencies.
+- Parses JSONL without runtime dependencies.
 - Handles common `url`, `host`, `input`, `matched-at`, and Nuclei `info` fields.
 - Normalizes URLs and strips query strings to reduce accidental data exposure.
 - Deduplicates observations using stable SHA-256 fingerprints.
@@ -28,24 +30,31 @@ vulnerability.
 
 - Python 3.9 or newer
 
-## Run it
+## Install and run
 
 ```bash
 git clone https://github.com/MEZ111/MEZ111.git
 cd MEZ111/projects/recon-evidence
-python3 recon_evidence.py sample.jsonl -o report.md
+python3 -m pip install .
+recon-evidence sample.jsonl -o report.md
 ```
 
 For machine-readable output:
 
 ```bash
-python3 recon_evidence.py sample.jsonl --format json
+recon-evidence sample.jsonl --format json
 ```
 
 Fail a CI job when input contains malformed lines:
 
 ```bash
-python3 recon_evidence.py findings.jsonl --strict
+recon-evidence findings.jsonl --strict
+```
+
+You can also run the source directly without installing it:
+
+```bash
+python3 recon_evidence.py sample.jsonl -o report.md
 ```
 
 ## Example
@@ -82,8 +91,8 @@ observation is exposed over HTTP. Scores are capped at 100. Change the weights i
 python3 -m unittest -v test_recon_evidence.py
 ```
 
-The test suite covers URL normalization, deduplication, ordering, and malformed
-input handling.
+GitHub Actions installs the CLI, runs all tests, and executes the sanitized
+example in strict mode on every relevant push and pull request.
 
 ## Limitations
 
