@@ -1,0 +1,4 @@
+{"tool":"httpx","url":"https://portal.example.test","title":"Public web service","severity":"info","confidence":100}
+{"tool":"nuclei","matched-at":"https://portal.example.test/debug","info":{"name":"Debug endpoint exposed","severity":"medium"},"confidence":80}
+{"tool":"nuclei","matched-at":"https://portal.example.test/debug","info":{"name":"Debug endpoint exposed","severity":"medium"},"confidence":80}
+{"tool":"subfinder","host":"api.example.test","name":"Discovered subdomain","severity":"info","confidence":70}
