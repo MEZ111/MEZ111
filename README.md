@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="projects/recon-evidence/README.md"><img alt="Flagship project" src="https://img.shields.io/badge/FLAGSHIP-Recon%20Evidence-34d399?style=for-the-badge&labelColor=07120f"></a>
-  <a href="projects/recon-evidence/test_recon_evidence.py"><img alt="Tests" src="https://img.shields.io/badge/TESTS-3%20PASSING-a7f3d0?style=for-the-badge&labelColor=07120f"></a>
+  <a href="https://github.com/MEZ111/MEZ111/actions/workflows/verify.yml"><img alt="Verification" src="https://github.com/MEZ111/MEZ111/actions/workflows/verify.yml/badge.svg"></a>
   <a href="SECURITY.md"><img alt="Responsible disclosure" src="https://img.shields.io/badge/SECURITY-RESPONSIBLE%20DISCLOSURE-6ee7b7?style=for-the-badge&labelColor=07120f"></a>
 </p>
 
@@ -52,7 +52,7 @@ status    prioritized
 </tr>
 </table>
 
-- **Verified:** 3 deterministic unit tests pass.
+- **Verified:** 3 deterministic unit tests pass locally and in GitHub Actions.
 - **Auditable:** scoring is explicit and capped; malformed lines are reported.
 - **Private by design:** query strings are removed during normalization.
 - **Safe boundary:** the program processes local evidence and never executes scanners.
