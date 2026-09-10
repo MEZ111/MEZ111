@@ -1,0 +1,14 @@
+# Local settings and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Local credentials; keep only sanitized examples
+.env
+.env.*
+!.env.example
+!.env.sample
