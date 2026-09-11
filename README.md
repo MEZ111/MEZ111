@@ -4,10 +4,11 @@
 
 <p align="center">
   <strong>Security engineering through explainable systems.</strong><br>
-  Authorization drift · attack paths · static analysis · exposure intelligence · network behavior
+  Evidence-gated reasoning · authorization drift · attack paths · static analysis · exposure intelligence
 </p>
 
 <p align="center">
+  <a href="https://github.com/MEZ111/barq-crs"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/barq-crs/ci.yml?branch=main&style=flat-square&label=BARQ-CRS" alt="BARQ-CRS build"></a>
   <a href="https://github.com/MEZ111/authz-diff"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/authz-diff/verify.yml?branch=main&style=flat-square&label=AuthZDiff" alt="AuthZDiff build"></a>
   <a href="https://github.com/MEZ111/aegis-graph"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/aegis-graph/verify.yml?branch=main&style=flat-square&label=AegisGraph" alt="AegisGraph build"></a>
   <a href="https://github.com/MEZ111/pysinktrace"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/pysinktrace/verify.yml?branch=main&style=flat-square&label=PySinkTrace" alt="PySinkTrace build"></a>
@@ -20,6 +21,16 @@
 ## Security systems portfolio
 
 <table>
+<tr>
+<td colspan="2" valign="top">
+
+### ⚡ [BARQ-CRS](https://github.com/MEZ111/barq-crs)
+**Evidence-gated cyber reasoning system**
+
+Correlates controlled-identity authorization differentials, effective OpenAPI security drift, patch-seeded AST variants, and shared-invariant state collisions. Independent evidence is fused into a deterministic priority queue, preserved in a redacted hash-chained ledger, and exported to SARIF for GitHub Code Scanning. Includes 34 deterministic tests and a synthetic ground-truth benchmark.
+
+</td>
+</tr>
 <tr>
 <td width="50%" valign="top">
 
@@ -102,6 +113,7 @@ No hidden scoring model. No unsupported exploitability claims. Each engine expos
 
 | Security layer | Engine | Output |
 | --- | --- | --- |
+| Evidence fusion | BARQ-CRS | ranked hypotheses, tamper-evident ledger, SARIF |
 | API authorization | AuthZDiff | semantic regressions, SARIF |
 | Threat modeling | AegisGraph | ranked paths, control impact, Mermaid |
 | Application security | PySinkTrace | interprocedural source-to-sink traces |
@@ -111,9 +123,11 @@ No hidden scoring model. No unsupported exploitability claims. Each engine expos
 
 ## Verification
 
-The five independent repositories contain **21 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
+The six independent repositories contain **55 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
 
 ```bash
+barq authz observations.jsonl
+barq variants security-fix.diff src/
 authz-diff base.yaml candidate.yaml --format sarif
 aegis-graph model.json --format mermaid
 pysinktrace src/ --format sarif
