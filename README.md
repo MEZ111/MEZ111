@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/MEZ111/authz-diff-"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/authz-diff-/verify.yml?branch=main&style=flat-square&label=AuthZDiff" alt="AuthZDiff build"></a>
+  <a href="https://github.com/MEZ111/authz-diff"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/authz-diff/verify.yml?branch=main&style=flat-square&label=AuthZDiff" alt="AuthZDiff build"></a>
   <a href="https://github.com/MEZ111/aegis-graph"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/aegis-graph/verify.yml?branch=main&style=flat-square&label=AegisGraph" alt="AegisGraph build"></a>
   <a href="https://github.com/MEZ111/pysinktrace"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/pysinktrace/verify.yml?branch=main&style=flat-square&label=PySinkTrace" alt="PySinkTrace build"></a>
   <a href="https://github.com/MEZ111/surface-delta"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/surface-delta/verify.yml?branch=main&style=flat-square&label=SurfaceDelta" alt="SurfaceDelta build"></a>
@@ -23,7 +23,7 @@
 <tr>
 <td width="50%" valign="top">
 
-### [AuthZDiff](https://github.com/MEZ111/authz-diff-)
+### [AuthZDiff](https://github.com/MEZ111/authz-diff)
 **Semantic API authorization regression analysis**
 
 Resolves effective OpenAPI security and detects authentication removal, weakened OAuth scopes, removed security schemes, and new anonymous sensitive routes. Emits Markdown, JSON, or SARIF and can block a release by severity.
