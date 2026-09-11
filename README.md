@@ -4,120 +4,122 @@
 
 <p align="center">
   <strong>Security engineering through explainable systems.</strong><br>
-  Detection logic, static analysis, attack-surface intelligence, and reproducible automation.
+  Authorization drift · attack paths · static analysis · exposure intelligence · network behavior
 </p>
 
 <p align="center">
-  <a href="https://github.com/MEZ111/surface-delta"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/surface-delta/verify.yml?branch=main&style=flat-square&label=surface-delta" alt="SurfaceDelta build"></a>
-  <a href="https://github.com/MEZ111/pysinktrace"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/pysinktrace/verify.yml?branch=main&style=flat-square&label=pysinktrace" alt="PySinkTrace build"></a>
-  <a href="https://github.com/MEZ111/beacon-lens"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/beacon-lens/verify.yml?branch=main&style=flat-square&label=beacon-lens" alt="BeaconLens build"></a>
+  <a href="https://github.com/MEZ111/authz-diff-"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/authz-diff-/verify.yml?branch=main&style=flat-square&label=AuthZDiff" alt="AuthZDiff build"></a>
+  <a href="https://github.com/MEZ111/aegis-graph"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/aegis-graph/verify.yml?branch=main&style=flat-square&label=AegisGraph" alt="AegisGraph build"></a>
+  <a href="https://github.com/MEZ111/pysinktrace"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/pysinktrace/verify.yml?branch=main&style=flat-square&label=PySinkTrace" alt="PySinkTrace build"></a>
+  <a href="https://github.com/MEZ111/surface-delta"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/surface-delta/verify.yml?branch=main&style=flat-square&label=SurfaceDelta" alt="SurfaceDelta build"></a>
+  <a href="https://github.com/MEZ111/beacon-lens"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/beacon-lens/verify.yml?branch=main&style=flat-square&label=BeaconLens" alt="BeaconLens build"></a>
 </p>
 
 ---
 
-## Three security problems. Three inspectable engines.
+## Security systems portfolio
 
 <table>
 <tr>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
 
-### [SurfaceDelta](https://github.com/MEZ111/surface-delta)
+### [AuthZDiff](https://github.com/MEZ111/authz-diff-)
+**Semantic API authorization regression analysis**
 
-**Attack-surface drift intelligence**
-
-Compares service snapshots and identifies:
-
-- newly exposed services
-- TLS regressions
-- private-to-public changes
-- software fingerprint drift
-- policy-based CI failures
-
-Every score carries its reasons.
+Resolves effective OpenAPI security and detects authentication removal, weakened OAuth scopes, removed security schemes, and new anonymous sensitive routes. Emits Markdown, JSON, or SARIF and can block a release by severity.
 
 </td>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
+
+### [AegisGraph](https://github.com/MEZ111/aegis-graph)
+**Counterfactual attack-path intelligence**
+
+Enumerates bounded routes from entry points to crown jewels, preserves the technique chain, ranks risk, and applies weighted hitting-set analysis to answer: *which security control breaks the most dangerous paths?*
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
 ### [PySinkTrace](https://github.com/MEZ111/pysinktrace)
+**Interprocedural Python taint tracing**
 
-**Explainable Python taint tracing**
-
-Uses the Python AST to trace:
-
-- web request sources
-- assignment propagation
-- command and process sinks
-- SQL execution paths
-- `eval` and `exec` flows
-- SARIF output for code scanning
-
-Every finding includes its line path.
+Uses the Python AST to follow request input through assignments and local wrappers into command execution, SQL, `eval`, and `exec`. Every SARIF finding contains the source, sink, and line path.
 
 </td>
-<td width="33%" valign="top">
+<td width="50%" valign="top">
+
+### [SurfaceDelta](https://github.com/MEZ111/surface-delta)
+**Attested attack-surface drift**
+
+Compares service snapshots, detects new exposure and TLS regressions, applies custom risk policy, and attaches SHA-256 provenance so every decision points back to the exact evidence.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
 ### [BeaconLens](https://github.com/MEZ111/beacon-lens)
+**Explainable network-behavior triage**
 
-**Network behavior triage**
+Analyzes Zeek JSON for periodic flows, stable payload patterns, and DNS encoding candidates. Reports interval variation, byte variation, entropy, length, and uniqueness instead of an opaque verdict.
 
-Analyzes Zeek JSON for:
+</td>
+<td width="50%" valign="top">
 
-- recurring connection intervals
-- stable outbound payload sizes
-- DNS prefix entropy
-- uniqueness and length gates
-- analyst-readable evidence
-- threshold-based CI failures
+### [Recon Evidence](projects/recon-evidence/README.md)
+**Reconnaissance evidence normalization**
 
-Every signal exposes its statistics.
+Normalizes mixed JSONL, removes duplicate observations with stable fingerprints, rejects malformed input, and produces an auditable review queue.
 
 </td>
 </tr>
 </table>
 
-## The design rule
+## One architecture across every tool
 
 ```text
-raw telemetry
-      ↓ normalize
-defensible evidence
-      ↓ explain
-review priority
-      ↓ verify
-human decision
+evidence acquisition
+        ↓
+normalization + provenance
+        ↓
+explainable analysis
+        ↓
+policy threshold
+        ↓
+human decision / CI gate
 ```
 
-I build tools around evidence instead of opaque verdicts. Scores are deterministic. Boundaries are documented. Example data is sanitized. Claims are backed by tests and GitHub Actions.
+No hidden scoring model. No unsupported exploitability claims. Each engine exposes the evidence, assumptions, limits, and deterministic logic behind its output.
 
 <div dir="rtl">
 
-أبني أدوات أمنية تشرح كيف وصلت للنتيجة؛ من البيانات الخام، إلى الدليل، إلى سبب رفع الأولوية. كل مشروع قابل للتشغيل والمراجعة والاختبار.
+أبني أدوات أمنية تشرح النتيجة ومسارها، من الدليل الخام إلى القرار. كل مشروع قابل للتثبيت والتشغيل والاختبار، وحدوده مكتوبة بوضوح.
 
 </div>
 
-## Engineering surface
+## Coverage
 
-| Layer | Work |
-| --- | --- |
-| Application security | source-to-sink analysis, input propagation, SARIF |
-| Exposure intelligence | service inventory, snapshot comparison, security drift |
-| Network detection | timing analysis, payload stability, DNS entropy |
-| Automation | installable Python CLIs, JSONL pipelines, Markdown/JSON output |
-| Delivery | deterministic tests, GitHub Actions, scoped permissions, documented limits |
+| Security layer | Engine | Output |
+| --- | --- | --- |
+| API authorization | AuthZDiff | semantic regressions, SARIF |
+| Threat modeling | AegisGraph | ranked paths, control impact, Mermaid |
+| Application security | PySinkTrace | interprocedural source-to-sink traces |
+| External exposure | SurfaceDelta | attested drift and policy gates |
+| Network detection | BeaconLens | statistical behavior signals |
+| Recon operations | Recon Evidence | normalized, deduplicated evidence |
 
 ## Verification
 
-The three independent repositories currently contain **10 deterministic tests** plus install-and-run CI workflows.
+The five independent repositories contain **21 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
 
 ```bash
-surface-delta before.jsonl after.jsonl --fail-risk 70
-pysinktrace src/ --format sarif -o results.sarif
+authz-diff base.yaml candidate.yaml --format sarif
+aegis-graph model.json --format mermaid
+pysinktrace src/ --format sarif
+surface-delta before.jsonl after.jsonl --policy policy.json
 beacon-lens zeek.jsonl --json
 ```
-
-### Additional lab
-
-[Recon Evidence](projects/recon-evidence/README.md) normalizes and deduplicates mixed reconnaissance output into an auditable triage report.
 
 ---
 
