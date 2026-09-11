@@ -27,7 +27,7 @@
 ### ⚡ [BARQ-CRS](https://github.com/MEZ111/barq-crs)
 **Evidence-gated cyber reasoning system**
 
-Correlates controlled-identity authorization differentials, effective OpenAPI security drift, patch-seeded AST variants, and shared-invariant state collisions. Independent evidence is fused into a deterministic priority queue, preserved in a redacted hash-chained ledger, and exported to SARIF for GitHub Code Scanning. Includes 34 deterministic tests and a synthetic ground-truth benchmark.
+Imports HAR and Burp traffic or performs scope-gated read-only collection across controlled identities, then correlates authorization differentials, OpenAPI security drift, patch-seeded AST variants, REST producer/consumer sequences, and state collisions. Evidence is ranked, hash-chained, and exported to SARIF. Includes 57 deterministic tests and a synthetic ground-truth benchmark.
 
 </td>
 </tr>
@@ -123,10 +123,12 @@ No hidden scoring model. No unsupported exploitability claims. Each engine expos
 
 ## Verification
 
-The six independent repositories contain **55 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
+The six independent repositories contain **78 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
 
 ```bash
+barq collect policy.json requests.json profiles.json
 barq authz observations.jsonl
+barq api-sequences openapi.json --depth 3
 barq variants security-fix.diff src/
 authz-diff base.yaml candidate.yaml --format sarif
 aegis-graph model.json --format mermaid
