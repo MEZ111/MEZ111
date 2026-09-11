@@ -3,89 +3,126 @@
 </p>
 
 <p align="center">
-  <a href="projects/recon-evidence/README.md"><img alt="Flagship project" src="https://img.shields.io/badge/FLAGSHIP-Recon%20Evidence-34d399?style=for-the-badge&labelColor=07120f"></a>
-  <a href="https://github.com/MEZ111/MEZ111/actions/workflows/verify.yml"><img alt="Verification" src="https://github.com/MEZ111/MEZ111/actions/workflows/verify.yml/badge.svg"></a>
-  <a href="SECURITY.md"><img alt="Responsible disclosure" src="https://img.shields.io/badge/SECURITY-RESPONSIBLE%20DISCLOSURE-6ee7b7?style=for-the-badge&labelColor=07120f"></a>
+  <strong>Security engineering through explainable systems.</strong><br>
+  Detection logic, static analysis, attack-surface intelligence, and reproducible automation.
 </p>
 
-## I turn noisy technical output into evidence people can act on.
+<p align="center">
+  <a href="https://github.com/MEZ111/surface-delta"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/surface-delta/verify.yml?branch=main&style=flat-square&label=surface-delta" alt="SurfaceDelta build"></a>
+  <a href="https://github.com/MEZ111/pysinktrace"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/pysinktrace/verify.yml?branch=main&style=flat-square&label=pysinktrace" alt="PySinkTrace build"></a>
+  <a href="https://github.com/MEZ111/beacon-lens"><img src="https://img.shields.io/github/actions/workflow/status/MEZ111/beacon-lens/verify.yml?branch=main&style=flat-square&label=beacon-lens" alt="BeaconLens build"></a>
+</p>
 
-I build security and automation tools with three requirements: the result must be reproducible, the interface must be clear, and every claim must be inspectable in the code.
+---
 
-<div dir="rtl">
-
-أبني أدوات أمنية وبرمجية تحوّل النتائج المبعثرة إلى معلومات واضحة قابلة للمراجعة واتخاذ القرار.
-
-</div>
-
-## Featured build — Recon Evidence
-
-Raw reconnaissance output is repetitive, inconsistent, and difficult to audit. **Recon Evidence** is a dependency-free Python CLI that normalizes JSONL from common security tools, removes duplicate observations using stable fingerprints, prioritizes evidence, and produces reports for humans or pipelines.
+## Three security problems. Three inspectable engines.
 
 <table>
 <tr>
-<td width="50%">
+<td width="33%" valign="top">
 
-**Input**
+### [SurfaceDelta](https://github.com/MEZ111/surface-delta)
 
-```json
-{"tool":"nuclei",
- "matched-at":"https://portal.example.test/debug",
- "info":{"name":"Debug endpoint exposed",
-         "severity":"medium"},
- "confidence":80}
-```
+**Attack-surface drift intelligence**
+
+Compares service snapshots and identifies:
+
+- newly exposed services
+- TLS regressions
+- private-to-public changes
+- software fingerprint drift
+- policy-based CI failures
+
+Every score carries its reasons.
 
 </td>
-<td width="50%">
+<td width="33%" valign="top">
 
-**Output**
+### [PySinkTrace](https://github.com/MEZ111/pysinktrace)
 
-```text
-score     70
-severity  medium
-target    /debug
-status    prioritized
-```
+**Explainable Python taint tracing**
+
+Uses the Python AST to trace:
+
+- web request sources
+- assignment propagation
+- command and process sinks
+- SQL execution paths
+- `eval` and `exec` flows
+- SARIF output for code scanning
+
+Every finding includes its line path.
+
+</td>
+<td width="33%" valign="top">
+
+### [BeaconLens](https://github.com/MEZ111/beacon-lens)
+
+**Network behavior triage**
+
+Analyzes Zeek JSON for:
+
+- recurring connection intervals
+- stable outbound payload sizes
+- DNS prefix entropy
+- uniqueness and length gates
+- analyst-readable evidence
+- threshold-based CI failures
+
+Every signal exposes its statistics.
 
 </td>
 </tr>
 </table>
 
-- **Verified:** 3 deterministic unit tests pass locally and in GitHub Actions.
-- **Auditable:** scoring is explicit and capped; malformed lines are reported.
-- **Private by design:** query strings are removed during normalization.
-- **Safe boundary:** the program processes local evidence and never executes scanners.
-
-[Read the design and run it →](projects/recon-evidence/README.md) · [Inspect the source →](projects/recon-evidence/recon_evidence.py) · [Review the tests →](projects/recon-evidence/test_recon_evidence.py)
-
-## Working stack
-
-| Area | Tools | What I use them for |
-| --- | --- | --- |
-| Security | Burp Suite, Nmap, Wireshark, Nuclei | validation, traffic analysis, asset evidence |
-| Automation | Python, JSON, CLI workflows | normalization, repeatable processing, reporting |
-| Applications | Flutter, React, Supabase | product interfaces and data-backed applications |
-| Delivery | Git, GitHub, Linux | versioned changes, review, reproducible execution |
-
-## Engineering standards
+## The design rule
 
 ```text
-scope before scanning
-evidence before severity
-tests before claims
-clear limits before release
+raw telemetry
+      ↓ normalize
+defensible evidence
+      ↓ explain
+review priority
+      ↓ verify
+human decision
 ```
 
-Every public project should include a tested setup path, real usage, sanitized output, known limitations, a fitting license, and a security boundary. New work follows Conventional Commits so the history explains why the code changed.
+I build tools around evidence instead of opaque verdicts. Scores are deterministic. Boundaries are documented. Example data is sanitized. Claims are backed by tests and GitHub Actions.
 
-## Activity
+<div dir="rtl">
 
-<p>
-  <a href="https://github.com/MEZ111?tab=repositories"><img alt="Repositories" src="https://img.shields.io/badge/EXPLORE-REPOSITORIES-ecfdf5?style=for-the-badge&labelColor=102720"></a>
-  <a href="https://github.com/MEZ111?tab=overview"><img alt="Contribution history" src="https://img.shields.io/badge/VIEW-CONTRIBUTION%20HISTORY-ecfdf5?style=for-the-badge&labelColor=102720"></a>
-</p>
+أبني أدوات أمنية تشرح كيف وصلت للنتيجة؛ من البيانات الخام، إلى الدليل، إلى سبب رفع الأولوية. كل مشروع قابل للتشغيل والمراجعة والاختبار.
+
+</div>
+
+## Engineering surface
+
+| Layer | Work |
+| --- | --- |
+| Application security | source-to-sink analysis, input propagation, SARIF |
+| Exposure intelligence | service inventory, snapshot comparison, security drift |
+| Network detection | timing analysis, payload stability, DNS entropy |
+| Automation | installable Python CLIs, JSONL pipelines, Markdown/JSON output |
+| Delivery | deterministic tests, GitHub Actions, scoped permissions, documented limits |
+
+## Verification
+
+The three independent repositories currently contain **10 deterministic tests** plus install-and-run CI workflows.
+
+```bash
+surface-delta before.jsonl after.jsonl --fail-risk 70
+pysinktrace src/ --format sarif -o results.sarif
+beacon-lens zeek.jsonl --json
+```
+
+### Additional lab
+
+[Recon Evidence](projects/recon-evidence/README.md) normalizes and deduplicates mixed reconnaissance output into an auditable triage report.
 
 ---
 
-<sub><a href="SECURITY.md">Security policy</a> · <a href="CONTRIBUTING.md">Contribution standards</a> · <a href="templates/PROJECT_README.md">Project documentation template</a></sub>
+<p align="center">
+  <a href="SECURITY.md">Security policy</a> ·
+  <a href="CONTRIBUTING.md">Contribution standards</a> ·
+  <a href="https://github.com/MEZ111?tab=repositories">All repositories</a>
+</p>
