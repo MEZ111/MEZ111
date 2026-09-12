@@ -27,7 +27,7 @@
 ### ⚡ [BARQ-CRS](https://github.com/MEZ111/barq-crs)
 **Evidence-gated cyber reasoning system**
 
-Imports HAR and Burp traffic or performs scope-gated read-only collection across controlled identities, then correlates authorization differentials, OpenAPI security drift, patch-seeded AST variants, REST producer/consumer sequences, and state collisions. Evidence is ranked, hash-chained, and exported to SARIF. Includes 57 deterministic tests and a synthetic ground-truth benchmark.
+Analyzes APKs with a dependency-free binary Manifest decoder, derives authorization and state tests from OpenAPI, imports HAR/Burp traffic, and performs scope-gated read-only collection across controlled identities. One campaign correlates mobile attack surface, BOLA/tenant differentials, security drift, patch-seeded AST variants, REST sequences, and state collisions, then emits a report, test plan, SARIF, and hash-chained evidence ledger. Includes 101 deterministic tests and a synthetic ground-truth benchmark.
 
 </td>
 </tr>
@@ -113,7 +113,7 @@ No hidden scoring model. No unsupported exploitability claims. Each engine expos
 
 | Security layer | Engine | Output |
 | --- | --- | --- |
-| Evidence fusion | BARQ-CRS | ranked hypotheses, tamper-evident ledger, SARIF |
+| Mobile, API, and evidence fusion | BARQ-CRS | APK findings, schema test plans, ranked hypotheses, ledger, SARIF |
 | API authorization | AuthZDiff | semantic regressions, SARIF |
 | Threat modeling | AegisGraph | ranked paths, control impact, Mermaid |
 | Application security | PySinkTrace | interprocedural source-to-sink traces |
@@ -123,12 +123,14 @@ No hidden scoring model. No unsupported exploitability claims. Each engine expos
 
 ## Verification
 
-The six independent repositories contain **78 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
+The six independent repositories contain **122 deterministic tests**. Each repository installs its real CLI and runs verification through GitHub Actions.
 
 ```bash
+barq mobile application.apk
+barq api-plan openapi.json --max-cases 250
+barq hunt campaign.json --output barq-output
 barq collect policy.json requests.json profiles.json
 barq authz observations.jsonl
-barq api-sequences openapi.json --depth 3
 barq variants security-fix.diff src/
 authz-diff base.yaml candidate.yaml --format sarif
 aegis-graph model.json --format mermaid
